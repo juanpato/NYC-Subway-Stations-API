@@ -54,7 +54,7 @@ namespace NYC_Subway_Stations_API
                 });
                 c.AddSecurityDefinition("Authorization", new OpenApiSecurityScheme
                 {
-                    Description = "Bearer must appear in header",
+                    Description = "Authorization : Bearer \\<token\\> must appear in header",
                     Type = SecuritySchemeType.ApiKey,
                     Name = "Authorization",
                     In = ParameterLocation.Header,
