@@ -33,11 +33,15 @@ namespace NYC_Subway_Stations_API
             _subwayClientUrl = Configuration["SubwayApiUrl"];
             if (string.IsNullOrEmpty(_subwayClientUrl))
                 throw new Exception("Subway URL Not Found");
+            _connectionString = Configuration.GetConnectionString("Dev");
+            if (string.IsNullOrEmpty(_connectionString))
+                throw new Exception("Connection String Not Found");
         }
 
         public IConfiguration Configuration { get; }
 
         private readonly string _subwayClientName;
+        private readonly string _connectionString;
         private readonly string _subwayClientUrl;
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -108,7 +112,7 @@ namespace NYC_Subway_Stations_API
             //Add database connection with Entity Framework
             services.AddDbContext<SubwayStationsContext>(
                 options => options
-                .UseSqlServer(Configuration.GetConnectionString("Dev")));
+                .UseSqlServer(_connectionString));
 
 
         }
