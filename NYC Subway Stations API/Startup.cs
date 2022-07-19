@@ -82,7 +82,6 @@ namespace NYC_Subway_Stations_API
             services.AddTransient<IGateway, GatewayService>();
             services.AddTransient<IUser, UserDAO>();
             services.AddTransient<ISubwayStation, SubwayStationDAO>();
-            services.AddTransient<IUserSubwayStation, UserSubwayStationDAO>();
             services.AddTransient<IAuth, AuthService>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
